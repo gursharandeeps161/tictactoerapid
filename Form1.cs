@@ -4,14 +4,17 @@ namespace tic_tac_toe
 {
     public partial class Form1 : Form
     {
+// Flag to track which player's turn it is (true for Player 1, false for Player 2)
 
         bool player1 = true;
+        // 2D array to hold references to the buttons (representing the grid)
         Button[,] button = new Button[3, 3];
 
+// Variables to store the number of wins for each player
         int win1 = 0;
         int win2 = 0;
 
-
+ // Constructor that initializes the form and sets up the button array
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +31,7 @@ namespace tic_tac_toe
 
 
         }
-
+// Method to check if a player has won the game
         private bool checkWin()
         {
             for (int i = 0; i < 3; i++)
@@ -61,6 +64,7 @@ namespace tic_tac_toe
             }
             return false;
         }
+        // Method to reset the board for a new game
         private void resetBoard()
         {
             for (int i = 0; i < 3; i++)
@@ -74,7 +78,7 @@ namespace tic_tac_toe
             player1 = true;
             turn.Text = "Turn Player 1(X)";
         }
-
+// Event handler for a button click (when a player makes a move)
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -108,6 +112,7 @@ namespace tic_tac_toe
                     win2++;
                     wins2.Text = $"{win2}";
                 }
+                // Ask the players if they want to play again
                 DialogResult result = MessageBox.Show("Do you want to play again?", "Restart Game", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
